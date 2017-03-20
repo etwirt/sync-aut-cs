@@ -7,19 +7,10 @@ namespace SyncAut.Common.Automaton
 	[TestFixture]
 	public class JumpTable_Test
 	{
-		private JumpTable jumpTable;
-
-		[SetUp]
-		public void SetUp()
-		{
-			jumpTable = new JumpTable();
-		}
-
 		[Test]
 		public void SetJumps_ReadJumps()
 		{
-			jumpTable.AddJump('a', 10);
-			jumpTable.AddJump('b', 20);
+			var jumpTable = new JumpTable(new Jump('a', 10), new Jump('b', 20));
 
 			Assert.That(jumpTable.Jump('a'), Is.EqualTo(10));
 			Assert.That(jumpTable.Jump('b'), Is.EqualTo(20));
@@ -28,14 +19,19 @@ namespace SyncAut.Common.Automaton
 		[Test]
 		public void JumpNotSet_Error()
 		{
+			var jumpTable = new JumpTable();
 			Assert.Throws<KeyNotFoundException>(() => jumpTable.Jump('a'));
 		}
 
 		[Test]
 		public void AddJumpByLetterTwice_Error()
 		{
-			jumpTable.AddJump('a', 5);
-			Assert.Throws<ArgumentException>(() => jumpTable.AddJump('a', 10));
+			var jumps = new[]
+			{
+				new Jump('a', 5),
+				new Jump('a', 10)
+			};
+			Assert.Throws<ArgumentException>(() => new JumpTable(jumps));
 		}
 	}
 }

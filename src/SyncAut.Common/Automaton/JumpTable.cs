@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton
 {
@@ -6,14 +8,36 @@ namespace SyncAut.Common.Automaton
 	{
 		private readonly Dictionary<char, int> letterActions = new Dictionary<char, int>();
 
-		public void AddJump(char letter, int newStateIndex)
+		public JumpTable([NotNull] IEnumerable<Jump> jumps)
 		{
-			letterActions.Add(letter, newStateIndex);
+			foreach (var jump in jumps)
+			{
+				AddJump(jump);
+			}
+		}
+
+		public JumpTable([NotNull] params Jump[] jumps)
+		{
+			foreach (var jump in jumps)
+			{
+				AddJump(jump);
+			}
+		}
+
+		private void AddJump([NotNull] Jump jump)
+		{
+			letterActions.Add(jump.Letter, jump.State);
 		}
 
 		public int Jump(char letter)
 		{
 			return letterActions[letter];
+		}
+
+		[NotNull]
+		public List<Jump> GetAllJumps()
+		{
+			return letterActions.Select(x => new Jump(x.Key, x.Value)).ToList();
 		}
 	}
 }
