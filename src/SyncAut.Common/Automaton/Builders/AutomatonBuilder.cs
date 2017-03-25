@@ -9,7 +9,7 @@ namespace SyncAut.Common.Automaton.Builders
 		private readonly List<State> states = new List<State>();
 		private StateBuilder stateBuilder;
 
-		public AutomatonBuilder BeginState(int index, [CanBeNull] string title)
+		public AutomatonBuilder BeginState(int index, [CanBeNull] string title = null)
 		{
 			if (stateBuilder != null)
 				throw new InvalidOperationException("Preparing of state already started");

@@ -40,6 +40,16 @@ namespace SyncAut.Common.Automaton
 		}
 
 		[Test]
+		public void CreateAutomatonWithStates_CheckGetAllStates()
+		{
+			var automaton = new Automaton(
+				new State(1, new JumpTable(new Jump('a', 2)), "state1"),
+				new State(2, new JumpTable(new Jump('a', 1)), "state2"));
+			Assert.That(automaton.StatesCount, Is.EqualTo(2));
+			Assert.That(automaton.GetAllStates().Count, Is.EqualTo(2));
+		}
+
+		[Test]
 		public void CreateAutomatonWithSameStateIndex_Error()
 		{
 			Assert.Throws<InvalidOperationException>(() => new Automaton(

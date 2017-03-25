@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton
@@ -11,7 +12,7 @@ namespace SyncAut.Common.Automaton
 
 		public int StatesCount => states.Count;
 
-		public Automaton(IEnumerable<State> states)
+		public Automaton([NotNull] IEnumerable<State> states)
 		{
 			foreach (var state in states)
 			{
@@ -19,7 +20,7 @@ namespace SyncAut.Common.Automaton
 			}
 		}
 
-		public Automaton(params State[] states)
+		public Automaton([NotNull] params State[] states)
 		{
 			foreach (var state in states)
 			{
@@ -59,6 +60,12 @@ namespace SyncAut.Common.Automaton
 		public int? TryJump(int fromState, char letter)
 		{
 			return GetState(fromState).TryJump(letter);
+		}
+
+		[NotNull]
+		public List<State> GetAllStates()
+		{
+			return states.Values.ToList();
 		}
 	}
 }
