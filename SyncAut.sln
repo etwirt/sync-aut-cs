@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncAut.Common", "SyncAut.Common\SyncAut.Common.csproj", "{5B605F45-13A2-475B-A554-C54CD4D50877}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncAut.Common", "src\SyncAut.Common\SyncAut.Common.csproj", "{5B605F45-13A2-475B-A554-C54CD4D50877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncAut.Tests", "..\tests\SyncAut.Tests\SyncAut.Tests.csproj", "{7A993537-9E35-40E3-A567-0C131F4B9A36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncAut.Tests", "tests\SyncAut.Tests\SyncAut.Tests.csproj", "{7A993537-9E35-40E3-A567-0C131F4B9A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
