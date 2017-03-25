@@ -59,5 +59,20 @@ namespace SyncAut.Common.Automaton
 			Assert.That(automaton.Jump(2, 'a'), Is.EqualTo(1));
 			Assert.That(automaton.Jump(2, 'c'), Is.EqualTo(1));
 		}
+
+		[Test]
+		public void CheckNotExistentJumps()
+		{
+			var automaton = new Automaton(
+				new State(1, new JumpTable(new Jump('a', 2), new Jump('b',  1)), "state1"),
+				new State(2, new JumpTable(new Jump('a', 1), new Jump('c', 1)), "state2"));
+			
+			Assert.That(automaton.TryJump(1, 'a'), Is.EqualTo(2));
+			Assert.That(automaton.TryJump(1, 'b'), Is.EqualTo(1));
+			Assert.That(automaton.TryJump(2, 'a'), Is.EqualTo(1));
+			Assert.That(automaton.TryJump(2, 'c'), Is.EqualTo(1));
+			Assert.Null(automaton.TryJump(1, 'c'));
+			Assert.Null(automaton.TryJump(2, 'd'));
+		}
 	}
 }

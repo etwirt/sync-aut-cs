@@ -34,6 +34,14 @@ namespace SyncAut.Common.Automaton
 			return letterActions[letter];
 		}
 
+		public int? TryJump(char letter)
+		{
+			int value;
+			if (letterActions.TryGetValue(letter, out value))
+				return value;
+			return null;
+		}
+
 		[NotNull]
 		public List<Jump> GetAllJumps()
 		{

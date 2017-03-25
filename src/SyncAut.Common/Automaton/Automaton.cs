@@ -55,5 +55,10 @@ namespace SyncAut.Common.Automaton
 		{
 			return GetState(fromState).Jump(letter);
 		}
+
+		public int? TryJump(int fromState, char letter)
+		{
+			return GetState(fromState).TryJump(letter);
+		}
 	}
 }
