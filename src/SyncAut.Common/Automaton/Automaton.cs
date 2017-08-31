@@ -12,7 +12,7 @@ namespace SyncAut.Common.Automaton
 
 		public int StatesCount => states.Count;
 
-		public Automaton([NotNull] IEnumerable<State> states)
+		public Automaton(IEnumerable<State> states)
 		{
 			foreach (var state in states)
 			{
@@ -20,7 +20,7 @@ namespace SyncAut.Common.Automaton
 			}
 		}
 
-		public Automaton([NotNull] params State[] states)
+		public Automaton(params State[] states)
 		{
 			foreach (var state in states)
 			{
@@ -28,7 +28,7 @@ namespace SyncAut.Common.Automaton
 			}
 		}
 
-		private void SetState([NotNull] State state)
+		private void SetState(State state)
 		{
 			states.AddOrUpdate(state.Index, state, (index, state1) =>
 			{
@@ -36,7 +36,6 @@ namespace SyncAut.Common.Automaton
 			});
 		}
 
-		[NotNull]
 		public State GetState(int index)
 		{
 			var state = states[index];
@@ -62,7 +61,6 @@ namespace SyncAut.Common.Automaton
 			return GetState(fromState).TryJump(letter);
 		}
 
-		[NotNull]
 		public List<State> GetAllStates()
 		{
 			return states.Values.ToList();

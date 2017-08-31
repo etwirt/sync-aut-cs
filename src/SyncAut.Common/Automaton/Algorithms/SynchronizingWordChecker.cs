@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton.Algorithms
 {
@@ -7,12 +6,12 @@ namespace SyncAut.Common.Automaton.Algorithms
 	{
 		private readonly Automaton automaton;
 
-		public SynchronizingWordChecker([NotNull] Automaton automaton)
+		public SynchronizingWordChecker(Automaton automaton)
 		{
 			this.automaton = automaton;
 		}
 
-		public bool Check([NotNull] string word)
+		public bool Check(string word)
 		{
 			var leftStates = automaton.GetAllStates().Select(x => x.Index).ToList();
 			if (leftStates.Count <= 1)

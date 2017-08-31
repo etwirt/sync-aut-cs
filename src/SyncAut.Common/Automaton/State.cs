@@ -16,7 +16,7 @@ namespace SyncAut.Common.Automaton
 		{
 		}
 
-		public State(int index, [NotNull] IEnumerable<Jump> jumps, [CanBeNull] string title)
+		public State(int index, IEnumerable<Jump> jumps, [CanBeNull] string title)
 		{
 			Index = index;
 			Title = title ?? "<No title>";
