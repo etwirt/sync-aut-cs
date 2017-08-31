@@ -4,14 +4,14 @@ using SyncAut.Common.Automaton.Builders;
 namespace SyncAut.Common.Automaton.Algorithms
 {
 	[TestFixture]
-	public class CheckIsSynchronizingWordAlgorithm_Test
+	public class SynchronizingWordChecker_Test
 	{
 		[Test]
 		public void EmptyAutomaton()
 		{
 			var a = new Automaton();
-			Assert.True(a.IsSynchronizedByWord("a"));
-			Assert.True(a.IsSynchronizedByWord(""));
+			Assert.True(IsSynchronizing(a, "a"));
+			Assert.True(IsSynchronizing(a, ""));
 		}
 
 		[Test]
@@ -22,8 +22,8 @@ namespace SyncAut.Common.Automaton.Algorithms
 				.WithJump('a', 1)
 				.EndState()
 				.Build();
-			Assert.True(a.IsSynchronizedByWord("a"));
-			Assert.True(a.IsSynchronizedByWord(""));
+			Assert.True(IsSynchronizing(a, "a"));
+			Assert.True(IsSynchronizing(a, ""));
 		}
 
 		[Test]
@@ -44,13 +44,18 @@ namespace SyncAut.Common.Automaton.Algorithms
 				.EndState()
 				.Build();
 
-			Assert.True(a.IsSynchronizedByWord("aab"));
-			Assert.True(a.IsSynchronizedByWord("aaba"));
-			Assert.True(a.IsSynchronizedByWord("b"));
-			Assert.True(a.IsSynchronizedByWord("ba"));
+			Assert.True(IsSynchronizing(a, "aab"));
+			Assert.True(IsSynchronizing(a, "aaba"));
+			Assert.True(IsSynchronizing(a, "b"));
+			Assert.True(IsSynchronizing(a, "ba"));
 
-			Assert.False(a.IsSynchronizedByWord(""));
-			Assert.False(a.IsSynchronizedByWord("a"));
+			Assert.False(IsSynchronizing(a, ""));
+			Assert.False(IsSynchronizing(a, "a"));
+		}
+
+		private static bool IsSynchronizing(Automaton automaton, string word)
+		{
+			return new SynchronizingWordChecker(automaton).Check(word);
 		}
 	}
 }

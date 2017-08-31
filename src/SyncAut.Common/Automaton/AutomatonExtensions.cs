@@ -6,7 +6,7 @@ namespace SyncAut.Common.Automaton
 	{
 		public static bool IsSynchronizedByWord(this Automaton automaton, string word)
 		{
-			return new CheckIsSynchronizingWordAlgorithm(automaton).Check(word);
+			return new SynchronizingWordChecker(automaton).Check(word);
 		}
 	}
 }

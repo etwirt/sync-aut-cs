@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Automaton\Algorithms\CheckIsSynchronizingWordAlgorithm.cs" />
+    <Compile Include="Automaton\Algorithms\SynchronizingWordChecker.cs" />
     <Compile Include="Automaton\Automaton.cs" />
     <Compile Include="Automaton\AutomatonExtensions.cs" />
     <Compile Include="Automaton\Builders\AutomatonBuilder.cs" />

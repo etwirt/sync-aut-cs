@@ -3,11 +3,11 @@ using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton.Algorithms
 {
-	public class CheckIsSynchronizingWordAlgorithm
+	public class SynchronizingWordChecker
 	{
 		private readonly Automaton automaton;
 
-		public CheckIsSynchronizingWordAlgorithm([NotNull] Automaton automaton)
+		public SynchronizingWordChecker([NotNull] Automaton automaton)
 		{
 			this.automaton = automaton;
 		}
