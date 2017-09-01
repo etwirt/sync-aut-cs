@@ -18,8 +18,8 @@ namespace SyncAut.Common.Automaton.Algorithms
 		public void OneStateAutomaton()
 		{
 			var a = new AutomatonBuilder()
-				.BeginState(1)
-				.WithJump('a', 1)
+				.BeginState("1")
+				.WithJump('a', "1")
 				.EndState()
 				.Build();
 			Assert.True(IsSynchronizing(a, "a"));
@@ -30,17 +30,17 @@ namespace SyncAut.Common.Automaton.Algorithms
 		public void SeveralStatesAutomatonWithSynchronizingWord()
 		{
 			var a = new AutomatonBuilder()
-				.BeginState(1)
-				.WithJump('a', 2)
-				.WithJump('b', 3)
+				.BeginState("1")
+				.WithJump('a', "2")
+				.WithJump('b', "3")
 				.EndState()
-				.BeginState(2)
-				.WithJump('a', 3)
-				.WithJump('b', 3)
+				.BeginState("2")
+				.WithJump('a', "3")
+				.WithJump('b', "3")
 				.EndState()
-				.BeginState(3)
-				.WithJump('a', 2)
-				.WithJump('b', 3)
+				.BeginState("3")
+				.WithJump('a', "2")
+				.WithJump('b', "3")
 				.EndState()
 				.Build();
 

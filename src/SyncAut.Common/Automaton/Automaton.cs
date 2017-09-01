@@ -8,7 +8,7 @@ namespace SyncAut.Common.Automaton
 {
 	public class Automaton
 	{
-		private readonly ConcurrentDictionary<int, State> states = new ConcurrentDictionary<int, State>();
+		private readonly ConcurrentDictionary<string, State> states = new ConcurrentDictionary<string, State>();
 
 		public int StatesCount => states.Count;
 
@@ -30,33 +30,34 @@ namespace SyncAut.Common.Automaton
 
 		private void SetState(State state)
 		{
-			states.AddOrUpdate(state.Index, state, (index, state1) =>
+			states.AddOrUpdate(state.Id, state, (id, state1) =>
 			{
-				throw new InvalidOperationException($"Duplication of state with index: {index}");
+				throw new InvalidOperationException($"Duplication of state with id: {id}");
 			});
 		}
 
-		public State GetState(int index)
+		public State GetState(string id)
 		{
-			var state = states[index];
+			var state = states[id];
 			if (state == null)
 				throw new InvalidOperationException();
 			return state;
 		}
 
 		[CanBeNull]
-		public State FindState(int index)
+		public State FindState(string id)
 		{
 			State state;
-			return states.TryGetValue(index, out state) ? state : null;
+			return states.TryGetValue(id, out state) ? state : null;
 		}
 
-		public int Jump(int fromState, char letter)
+		public string Jump(string fromState, char letter)
 		{
 			return GetState(fromState).Jump(letter);
 		}
 
-		public int? TryJump(int fromState, char letter)
+		[CanBeNull]
+		public string TryJump(string fromState, char letter)
 		{
 			return GetState(fromState).TryJump(letter);
 		}

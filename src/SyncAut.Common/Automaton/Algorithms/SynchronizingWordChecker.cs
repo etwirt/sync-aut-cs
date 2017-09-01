@@ -13,7 +13,7 @@ namespace SyncAut.Common.Automaton.Algorithms
 
 		public bool Check(string word)
 		{
-			var leftStates = automaton.GetAllStates().Select(x => x.Index).ToList();
+			var leftStates = automaton.GetAllStates().Select(x => x.Id).ToList();
 			if (leftStates.Count <= 1)
 				return true;
 			foreach (var letter in word)

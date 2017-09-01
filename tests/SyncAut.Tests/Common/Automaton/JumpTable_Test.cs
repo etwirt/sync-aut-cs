@@ -10,10 +10,10 @@ namespace SyncAut.Common.Automaton
 		[Test]
 		public void SetJumps_ReadJumps()
 		{
-			var jumpTable = new JumpTable(new Jump('a', 10), new Jump('b', 20));
+			var jumpTable = new JumpTable(new Jump('a', "10"), new Jump('b', "20"));
 
-			Assert.That(jumpTable.Jump('a'), Is.EqualTo(10));
-			Assert.That(jumpTable.Jump('b'), Is.EqualTo(20));
+			Assert.That(jumpTable.Jump('a'), Is.EqualTo("10"));
+			Assert.That(jumpTable.Jump('b'), Is.EqualTo("20"));
 		}
 
 		[Test]
@@ -28,8 +28,8 @@ namespace SyncAut.Common.Automaton
 		{
 			var jumps = new[]
 			{
-				new Jump('a', 5),
-				new Jump('a', 10)
+				new Jump('a', "5"),
+				new Jump('a', "10")
 			};
 			Assert.Throws<ArgumentException>(() => new JumpTable(jumps));
 		}

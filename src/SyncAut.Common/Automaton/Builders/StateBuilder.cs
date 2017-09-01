@@ -6,12 +6,12 @@ namespace SyncAut.Common.Automaton.Builders
 	public class StateBuilder
 	{
 		private string stateTitle;
-		private int stateIndex;
+		private string stateId;
 		private readonly List<Jump> jumps = new List<Jump>();
 
-		public StateBuilder WithIndex(int index)
+		public StateBuilder WithId(string id)
 		{
-			stateIndex = index;
+			stateId = id;
 			return this;
 		}
 
@@ -21,7 +21,7 @@ namespace SyncAut.Common.Automaton.Builders
 			return this;
 		}
 
-		public StateBuilder WithJump(char letter, int state)
+		public StateBuilder WithJump(char letter, string state)
 		{
 			jumps.Add(new Jump(letter, state));
 			return this;
@@ -29,7 +29,7 @@ namespace SyncAut.Common.Automaton.Builders
 
 		public State Build()
 		{
-			return new State(stateIndex, jumps, stateTitle);
+			return new State(stateId, jumps, stateTitle);
 		}
 	}
 }

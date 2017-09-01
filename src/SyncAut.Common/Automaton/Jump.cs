@@ -3,12 +3,12 @@
 	public class Jump
 	{
 		public char Letter { get; private set; }
-		public int State { get; private set; }
+		public string StateId { get; private set; }
 
-		public Jump(char letter, int state)
+		public Jump(char letter, string stateId)
 		{
 			Letter = letter;
-			State = state;
+			StateId = stateId;
 		}
 	}
 }

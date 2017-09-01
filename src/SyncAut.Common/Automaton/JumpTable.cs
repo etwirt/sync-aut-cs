@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton
 {
 	public class JumpTable
 	{
-		private readonly Dictionary<char, int> letterActions = new Dictionary<char, int>();
+		private readonly Dictionary<char, string> letterActions = new Dictionary<char, string>();
 
 		public JumpTable(IEnumerable<Jump> jumps)
 		{
@@ -25,17 +26,18 @@ namespace SyncAut.Common.Automaton
 
 		private void AddJump(Jump jump)
 		{
-			letterActions.Add(jump.Letter, jump.State);
+			letterActions.Add(jump.Letter, jump.StateId);
 		}
 
-		public int Jump(char letter)
+		public string Jump(char letter)
 		{
 			return letterActions[letter];
 		}
 
-		public int? TryJump(char letter)
+		[CanBeNull]
+		public string TryJump(char letter)
 		{
-			int value;
+			string value;
 			if (letterActions.TryGetValue(letter, out value))
 				return value;
 			return null;

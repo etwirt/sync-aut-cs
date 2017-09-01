@@ -9,19 +9,19 @@ namespace SyncAut.Common.Automaton.Builders
 		private readonly List<State> states = new List<State>();
 		private StateBuilder stateBuilder;
 
-		public AutomatonBuilder BeginState(int index, [CanBeNull] string title = null)
+		public AutomatonBuilder BeginState(string id, [CanBeNull] string title = null)
 		{
 			if (stateBuilder != null)
 				throw new InvalidOperationException("Preparing of state already started");
 			stateBuilder = new StateBuilder();
-			stateBuilder.WithIndex(index);
+			stateBuilder.WithId(id);
 			stateBuilder.WithTitle(title);
 			return this;
 		}
 
-		public AutomatonBuilder WithJump(char letter, int index)
+		public AutomatonBuilder WithJump(char letter, string id)
 		{
-			stateBuilder.WithJump(letter, index);
+			stateBuilder.WithJump(letter, id);
 			return this;
 		}
 
