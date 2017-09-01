@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace SyncAut.Common.Automaton
@@ -32,6 +33,11 @@ namespace SyncAut.Common.Automaton
 		public string TryJump(char letter)
 		{
 			return jumpTable.TryJump(letter);
+		}
+
+		public char[] GetPossibleLetters()
+		{
+			return jumpTable.GetAllJumps().Select(x => x.Letter).ToArray();
 		}
 	}
 }

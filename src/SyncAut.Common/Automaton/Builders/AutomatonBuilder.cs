@@ -38,7 +38,7 @@ namespace SyncAut.Common.Automaton.Builders
 		{
 			if (stateBuilder != null)
 				throw new InvalidOperationException("Preparing of state has began but not finished");
-			return new Automaton(states);
+			return new Automaton(states.ToArray());
 		}
 	}
 }

@@ -12,13 +12,7 @@ namespace SyncAut.Common.Automaton
 
 		public int StatesCount => states.Count;
 
-		public Automaton(IEnumerable<State> states)
-		{
-			foreach (var state in states)
-			{
-				SetState(state);
-			}
-		}
+		public char[] Letters { get; }
 
 		public Automaton(params State[] states)
 		{
@@ -26,6 +20,9 @@ namespace SyncAut.Common.Automaton
 			{
 				SetState(state);
 			}
+
+			var letters = states.SelectMany(x => x.GetPossibleLetters()).Distinct().ToArray();
+			Letters = letters;
 		}
 
 		private void SetState(State state)
