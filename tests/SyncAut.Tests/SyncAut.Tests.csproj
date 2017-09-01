@@ -48,6 +48,7 @@
     <Compile Include="Common\Automaton\Automaton_Test.cs" />
     <Compile Include="Common\Automaton\Builders\AutomatonBuilder_Test.cs" />
     <Compile Include="Common\Automaton\JumpTable_Test.cs" />
+    <Compile Include="Common\Automaton\PowerAutomaton_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
